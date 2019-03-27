@@ -116,6 +116,99 @@
           }
         }
       }
+    },
+    "some": {
+      "root": "libs/some",
+      "sourceRoot": "libs/some/src",
+      "projectType": "library",
+      "prefix": "ivytest",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/some/tsconfig.lib.json",
+              "libs/some/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/some/jest.config.js",
+            "tsConfig": "libs/some/tsconfig.spec.json",
+            "setupFile": "libs/some/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "transitive": {
+      "root": "libs/transitive",
+      "sourceRoot": "libs/transitive/src",
+      "projectType": "library",
+      "prefix": "ivytest",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/transitive/tsconfig.lib.json",
+              "libs/transitive/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/transitive/jest.config.js",
+            "tsConfig": "libs/transitive/tsconfig.spec.json",
+            "setupFile": "libs/transitive/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "underlying": {
+      "root": "libs/underlying",
+      "sourceRoot": "libs/underlying/src",
+      "projectType": "library",
+      "prefix": "ivytest",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/underlying/tsconfig.lib.json",
+              "libs/underlying/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/underlying/jest.config.js",
+            "tsConfig": "libs/underlying/tsconfig.spec.json",
+            "setupFile": "libs/underlying/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

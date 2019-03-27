@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ivytest/some": ["libs/some/src/index.ts"],
+      "@ivytest/transitive": ["libs/transitive/src/index.ts"],
+      "@ivytest/underlying": ["libs/underlying/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

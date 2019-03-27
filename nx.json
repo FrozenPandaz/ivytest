@@ -13,6 +13,15 @@
     },
     "ivytest-e2e": {
       "tags": []
+    },
+    "some": {
+      "tags": []
+    },
+    "transitive": {
+      "tags": []
+    },
+    "underlying": {
+      "tags": []
     }
   }
 }
