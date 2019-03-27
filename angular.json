@@ -1,0 +1,134 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "ivytest": {
+      "root": "apps/ivytest/",
+      "sourceRoot": "apps/ivytest/src",
+      "projectType": "application",
+      "prefix": "ivytest",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/ivytest",
+            "index": "apps/ivytest/src/index.html",
+            "main": "apps/ivytest/src/main.ts",
+            "polyfills": "apps/ivytest/src/polyfills.ts",
+            "tsConfig": "apps/ivytest/tsconfig.app.json",
+            "assets": [
+              "apps/ivytest/src/favicon.ico",
+              "apps/ivytest/src/assets"
+            ],
+            "styles": ["apps/ivytest/src/styles.css"],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ivytest/src/environments/environment.ts",
+                  "with": "apps/ivytest/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ivytest:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ivytest:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ivytest:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/ivytest/tsconfig.app.json",
+              "apps/ivytest/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/ivytest/jest.config.js",
+            "tsConfig": "apps/ivytest/tsconfig.spec.json",
+            "setupFile": "apps/ivytest/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ivytest-e2e": {
+      "root": "apps/ivytest-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/ivytest-e2e/cypress.json",
+            "tsConfig": "apps/ivytest-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ivytest:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ivytest:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/ivytest-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/schematics"
+  },
+  "schematics": {
+    "@nrwl/schematics:application": {
+      "framework": "angular"
+    }
+  },
+  "defaultProject": "ivytest"
+}
